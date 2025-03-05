@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครงาน - JR Rich Global Company Limited</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/jr-logo.jpg" alt="JR Rich Global" height="40" class="company-logo">
+                <span class="brand-text">JR Rich Global</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html#home">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#services">บริการ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#about">เกี่ยวกับเรา</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">ติดต่อ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Job Application Section -->
+    <section class="py-5 bg-light" style="margin-top: 80px;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <img src="images/jr-logo-full.jpg" alt="JR Rich Global Logo" class="img-fluid mb-4" style="max-width: 200px;">
+                <h2>สมัครงาน</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <form id="jobApplicationForm" class="job-application-form">
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">ประเภทการสมัคร</label>
+                                    <select class="form-select" name="jobType" required>
+                                        <option value="">เลือกประเภทการสมัคร</option>
+                                        <option value="fulltime">พนักงานประจำ</option>
+                                        <option value="parttime">พนักงานพาร์ทไทม์</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">ชื่อจริง - นามสกุล</label>
+                                    <input type="text" class="form-control" name="fullName" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">เบอร์โทรศัพท์</label>
+                                    <input type="tel" class="form-control" name="phone" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">อายุ</label>
+                                    <input type="number" class="form-control" name="age" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">จังหวัด</label>
+                                    <input type="text" class="form-control" name="province" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">อาชีพ</label>
+                                    <input type="text" class="form-control" name="occupation" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">รายได้ต่อเดือน (บาท)</label>
+                                    <input type="number" class="form-control" name="currentIncome" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">รายได้ที่คาดหวังต่อวันกับบริษัทของเรา (บาท)</label>
+                                    <input type="number" class="form-control" name="expectedIncome" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">ประวัติการทำงานก่อนหน้า</label>
+                                    <textarea class="form-control" name="workHistory" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">ช่องทางการติดต่อ ID Line/facebook</label>
+                                    <input type="text" class="form-control" name="socialContact" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">ภาพถ่ายหน้าตรง</label>
+                                    <input type="file" class="form-control" name="photo" accept="image/*" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">เรซูเม่ (ไฟล์แนบ)</label>
+                                    <input type="file" class="form-control" name="resume" accept=".pdf,.doc,.docx">
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">บันทึกข้อมูล</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2025 JR Rich Global Company Limited. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="https://lin.ee/whH0XiD" target="_blank" rel="noopener" class="text-light me-3"><i class="fab fa-line"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-light"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

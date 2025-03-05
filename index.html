@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-lg">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="images/logo.jpg" alt="JR Rich Global" height="50" class="company-logo">
+                <img src="images/jr-logo.jpg" alt="JR Rich Global" height="40" class="company-logo">
                 <span class="brand-text">JR Rich Global</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -25,7 +25,6 @@
                     <li class="nav-item"><a class="nav-link" href="#services">บริการ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">เกี่ยวกับเรา</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">ติดต่อ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#careers">สมัครงาน</a></li>
                 </ul>
             </div>
         </div>
@@ -37,13 +36,17 @@
         <div class="container">
             <div class="row align-items-center min-vh-100">
                 <div class="col-lg-6">
+                    <img src="images/jr-logo-full.jpg" alt="JR Rich Global Logo" class="img-fluid mb-4" style="max-width: 300px;">
                     <h1 class="display-4 fw-bold">JR Rich Global</h1>
                     <h2 class="h3 mb-4">ผู้นำด้านบริการขนส่งและโลจิสติกส์ระดับโลก</h2>
                     <p class="lead">เราให้บริการโซลูชันด้านโลจิสติกส์ที่ครบวงจร ด้วยมาตรฐานระดับสากลและทีมงานมืออาชีพ</p>
-                    <a href="#contact" class="btn btn-primary btn-lg">ติดต่อเรา</a>
+                    <div class="d-flex gap-3">
+                        <a href="#contact" class="btn btn-primary btn-lg">ติดต่อเรา</a>
+                        <a href="careers.html" class="btn btn-outline-primary btn-lg">สมัครงานกับเรา</a>
+                    </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="images/building.jpg" alt="JR Rich Global Building" class="img-fluid rounded shadow-lg building-image">
+                    <img src="images/building.jpg" alt="JR Rich Global Building" class="img-fluid rounded shadow-lg building-image" style="width: 100%; height: auto;">
                 </div>
             </div>
         </div>
@@ -99,74 +102,6 @@
         </div>
     </section>
 
-    <!-- Job Application Section -->
-    <section id="careers" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">สมัครงาน</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <form id="jobApplicationForm" class="job-application-form">
-                        <div class="mb-3">
-                            <label class="form-label">ประเภทการสมัคร</label>
-                            <select class="form-select" name="jobType" required>
-                                <option value="">เลือกประเภทการสมัคร</option>
-                                <option value="fulltime">พนักงานประจำ</option>
-                                <option value="parttime">พนักงานพาร์ทไทม์</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">ชื่อจริง - นามสกุล</label>
-                            <input type="text" class="form-control" name="fullName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">เบอร์โทรศัพท์</label>
-                            <input type="tel" class="form-control" name="phone" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">อายุ</label>
-                            <input type="number" class="form-control" name="age" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">จังหวัด</label>
-                            <input type="text" class="form-control" name="province" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">อาชีพ</label>
-                            <input type="text" class="form-control" name="occupation" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">รายได้ต่อเดือน (บาท)</label>
-                            <input type="number" class="form-control" name="currentIncome" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">รายได้ที่คาดหวังต่อวันกับบริษัทของเรา (บาท)</label>
-                            <input type="number" class="form-control" name="expectedIncome" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">ประวัติการทำงานก่อนหน้า</label>
-                            <textarea class="form-control" name="workHistory" rows="3" required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">ช่องทางการติดต่อ ID Line/facebook</label>
-                            <input type="text" class="form-control" name="socialContact" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">ภาพถ่ายหน้าตรง</label>
-                            <input type="file" class="form-control" name="photo" accept="image/*" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">เรซูเม่ (ไฟล์แนบ)</label>
-                            <input type="file" class="form-control" name="resume" accept=".pdf,.doc,.docx">
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">บันทึกข้อมูล</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="py-5">
         <div class="container">
@@ -196,6 +131,9 @@
                         <p><i class="fas fa-phone me-2"></i>02-224-9675</p>
                         <p><i class="fas fa-envelope me-2"></i>info@jrrichglobal.com</p>
                         <p><a href="https://lin.ee/whH0XiD" target="_blank" rel="noopener" class="text-dark"><i class="fab fa-line me-2"></i>LINE Official Account</a></p>
+                        <div class="mt-4">
+                            <a href="careers.html" class="btn btn-primary">สมัครงานกับเรา</a>
+                        </div>
                     </div>
                 </div>
             </div>
