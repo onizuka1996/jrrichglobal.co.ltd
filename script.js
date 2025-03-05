@@ -112,21 +112,22 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Create message text
             let messageText = '🎯 *มีผู้สมัครงานใหม่!*\n\n';
-            messageText += '👤 *ข้อมูลผู้สมัคร*\n';
+            messageText += '👤 *ข้อมูลส่วนตัว*\n';
             messageText += `ชื่อ-นามสกุล: ${formData.get('fullName')}\n`;
-            messageText += `อีเมล: ${formData.get('email')}\n`;
             messageText += `เบอร์โทร: ${formData.get('phone')}\n`;
-            messageText += `ที่อยู่: ${formData.get('address')}\n\n`;
+            messageText += `อายุ: ${formData.get('age')} ปี\n`;
+            messageText += `จังหวัด: ${formData.get('province')}\n\n`;
             
-            messageText += '💼 *รายละเอียดการสมัคร*\n';
-            messageText += `ตำแหน่งที่สมัคร: ${formData.get('position')}\n`;
-            messageText += `ประเภทงาน: ${formData.get('jobType')}\n`;
-            messageText += `เงินเดือนที่ต้องการ: ${formData.get('salary')}\n`;
-            messageText += `วันที่สามารถเริ่มงาน: ${formData.get('startDate')}\n\n`;
+            messageText += '💼 *ข้อมูลการทำงานและรายได้*\n';
+            messageText += `อาชีพปัจจุบัน: ${formData.get('occupation')}\n`;
+            messageText += `รายได้ต่อเดือน: ${formData.get('currentIncome')} บาท\n`;
+            messageText += `รายได้ที่คาดหวังต่อวัน: ${formData.get('expectedIncome')} บาท\n\n`;
             
-            messageText += '📝 *ประสบการณ์และทักษะ*\n';
-            messageText += `ประสบการณ์ทำงาน: ${formData.get('experience')}\n`;
-            messageText += `ทักษะที่เกี่ยวข้อง: ${formData.get('skills')}\n`;
+            messageText += '📝 *ประวัติการทำงาน*\n';
+            messageText += `${formData.get('workHistory')}\n\n`;
+            
+            messageText += '📱 *ช่องทางติดต่อ*\n';
+            messageText += `Line/Facebook: ${formData.get('socialContact')}`;
             
             try {
                 // Send to Telegram
