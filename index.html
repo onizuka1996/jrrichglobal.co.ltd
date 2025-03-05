@@ -25,6 +25,7 @@
                     <li class="nav-item"><a class="nav-link" href="#services">บริการ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">เกี่ยวกับเรา</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">ติดต่อ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#careers">สมัครงาน</a></li>
                 </ul>
             </div>
         </div>
@@ -93,6 +94,74 @@
                 </div>
                 <div class="col-lg-6">
                     <img src="images/about.jpg" alt="About Us" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Application Section -->
+    <section id="careers" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">สมัครงาน</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form id="jobApplicationForm" class="job-application-form">
+                        <div class="mb-3">
+                            <label class="form-label">ประเภทการสมัคร</label>
+                            <select class="form-select" name="jobType" required>
+                                <option value="">เลือกประเภทการสมัคร</option>
+                                <option value="fulltime">พนักงานประจำ</option>
+                                <option value="parttime">พนักงานพาร์ทไทม์</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ชื่อจริง - นามสกุล</label>
+                            <input type="text" class="form-control" name="fullName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">เบอร์โทรศัพท์</label>
+                            <input type="tel" class="form-control" name="phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">อายุ</label>
+                            <input type="number" class="form-control" name="age" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">จังหวัด</label>
+                            <input type="text" class="form-control" name="province" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">อาชีพ</label>
+                            <input type="text" class="form-control" name="occupation" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">รายได้ต่อเดือน (บาท)</label>
+                            <input type="number" class="form-control" name="currentIncome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">รายได้ที่คาดหวังต่อวันกับบริษัทของเรา (บาท)</label>
+                            <input type="number" class="form-control" name="expectedIncome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ประวัติการทำงานก่อนหน้า</label>
+                            <textarea class="form-control" name="workHistory" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ช่องทางการติดต่อ ID Line/facebook</label>
+                            <input type="text" class="form-control" name="socialContact" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ภาพถ่ายหน้าตรง</label>
+                            <input type="file" class="form-control" name="photo" accept="image/*" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">เรซูเม่ (ไฟล์แนบ)</label>
+                            <input type="file" class="form-control" name="resume" accept=".pdf,.doc,.docx">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">บันทึกข้อมูล</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
