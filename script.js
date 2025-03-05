@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ระบบตรวจสอบไฟล์
     const validateFile = (file, maxSize, allowedTypes) => {
+        if (!file) return false;
         if (file.size > maxSize) {
             alert(`ขนาดไฟล์เกิน ${maxSize/1024/1024}MB`);
             return false;
@@ -122,7 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (photoInput) {
         photoInput.addEventListener('change', function(e) {
-            if (!validateFile(e.target.files[0], 5*1024*1024, ['image/jpeg', 'image/png'])) {
+            const file = e.target.files[0];
+            if (file && !validateFile(file, 5*1024*1024, ['image/jpeg', 'image/png'])) {
                 this.value = '';
             }
         });
@@ -130,7 +132,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (resumeInput) {
         resumeInput.addEventListener('change', function(e) {
-            if (!validateFile(e.target.files[0], 10*1024*1024, ['application/pdf'])) {
+            const file = e.target.files[0];
+            if (file && !validateFile(file, 10*1024*1024, ['application/pdf'])) {
                 this.value = '';
             }
         });
@@ -140,11 +143,11 @@ document.addEventListener('DOMContentLoaded', function() {
         applicationForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            
             try {
-                // First, send the text message
+                // Get form data
+                const formData = new FormData(this);
+                
+                // Create message text
                 let messageText = '🎯 *มีผู้สมัครงานใหม่!*\n\n';
                 messageText += '👤 *ข้อมูลส่วนตัว*\n';
                 messageText += `ชื่อ-นามสกุล: ${formData.get('fullName')}\n`;
@@ -194,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
 
                     if (!photoResponse.ok) {
-                        throw new Error('Failed to send photo');
+                        console.error('Failed to send photo');
                     }
                 }
 
@@ -212,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
 
                     if (!resumeResponse.ok) {
-                        throw new Error('Failed to send resume');
+                        console.error('Failed to send resume');
                     }
                 }
 
@@ -222,49 +225,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 console.error('Error:', error);
                 alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
-            }
-        });
-    }
-    
-    const jobForm = document.getElementById('jobApplicationForm');
-    if (jobForm) {
-        jobForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(jobForm);
-            const data = Object.fromEntries(formData.entries());
-            
-            // Format Telegram message
-            const message = `📝 *ใบสมัครงานใหม่* 📝
-ชื่อ: ${data.fullName}
-เบอร์โทร: ${data.phone}
-อายุ: ${data.age}
-จังหวัด: ${data.province}
-อาชีพปัจจุบัน: ${data.occupation}
-รายได้ปัจจุบัน: ${data.currentIncome} บาท/เดือน
-รายได้ที่คาดหวัง: ${data.expectedIncome} บาท/วัน
-ประวัติการทำงาน: ${data.workHistory}
-ช่องทางการติดต่อ: ${data.socialContact}`;
-
-            try {
-                // Send to Telegram
-                await fetch(`https://api.telegram.org/bot7759410116:AAHisFHNSz-xRzl6BV9PPopwzJUz5oJl7_M/sendMessage`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        chat_id: '7596659509',
-                        text: message,
-                        parse_mode: 'Markdown'
-                    })
-                });
-                
-                alert('ส่งข้อมูลสำเร็จ! เราจะติดต่อกลับเร็วนี้');
-                jobForm.reset();
-            } catch (error) {
-                console.error('Error:', error);
-                alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองอีกครั้ง');
             }
         });
     }
