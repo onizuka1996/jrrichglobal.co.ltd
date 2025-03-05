@@ -103,6 +103,39 @@ const TELEGRAM_CHAT_ID = '7596659509';
 document.addEventListener('DOMContentLoaded', function() {
     const applicationForm = document.getElementById('applicationForm');
     
+    // ระบบตรวจสอบไฟล์
+    const validateFile = (file, maxSize, allowedTypes) => {
+        if (file.size > maxSize) {
+            alert(`ขนาดไฟล์เกิน ${maxSize/1024/1024}MB`);
+            return false;
+        }
+        if (!allowedTypes.includes(file.type)) {
+            alert('ประเภทไฟล์ไม่ถูกต้อง');
+            return false;
+        }
+        return true;
+    };
+
+    // Event Listeners สำหรับอัพโหลดไฟล์
+    const photoInput = document.getElementById('photo');
+    const resumeInput = document.getElementById('resume');
+
+    if (photoInput) {
+        photoInput.addEventListener('change', function(e) {
+            if (!validateFile(e.target.files[0], 5*1024*1024, ['image/jpeg', 'image/png'])) {
+                this.value = '';
+            }
+        });
+    }
+
+    if (resumeInput) {
+        resumeInput.addEventListener('change', function(e) {
+            if (!validateFile(e.target.files[0], 10*1024*1024, ['application/pdf'])) {
+                this.value = '';
+            }
+        });
+    }
+    
     if (applicationForm) {
         applicationForm.addEventListener('submit', async function(e) {
             e.preventDefault();
