@@ -10,25 +10,57 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-lg">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow">
         <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="images/jr-logo.jpg" alt="JR Rich Global" height="40" class="company-logo">
-                <span class="brand-text">JR Rich Global</span>
+            <a class="navbar-brand" href="index.html">
+                <img src="images/new-logo.png" alt="Logo" height="40" class="me-2">
+                <span class="d-none d-md-inline">JR Rich Global</span>
             </a>
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">หน้าแรก</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">บริการ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">เกี่ยวกับเรา</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">ติดต่อ</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">หน้าแรก</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            บริการ
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#services">บริการทางทะเล</a></li>
+                            <li><a class="dropdown-item" href="#services">บริการทางอากาศ</a></li>
+                            <li><a class="dropdown-item" href="#services">บริการทางบก</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">เกี่ยวกับเรา</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">ติดต่อ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="careers.html">
+                            <i class="fas fa-briefcase me-1"></i>สมัครงาน
+                        </a>
+                    </li>
                 </ul>
+                
+                <!-- ส่วนค้นหาและโซเชียล -->
+                <div class="d-flex ms-3">
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="ค้นหา">
+                    </form>
+                    <div class="social-icons ms-3">
+                        <a href="https://lin.ee/whH0XiD" target="_blank" class="text-light me-2"><i class="fab fa-line"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
-        
     </nav>
 
     <!-- Hero Section -->
