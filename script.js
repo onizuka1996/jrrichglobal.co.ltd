@@ -110,28 +110,28 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get form data
             const formData = new FormData(this);
             
-            // Create message text
-            let messageText = '🎯 *มีผู้สมัครงานใหม่!*\n\n';
-            messageText += '👤 *ข้อมูลส่วนตัว*\n';
-            messageText += `ชื่อ-นามสกุล: ${formData.get('fullName')}\n`;
-            messageText += `เบอร์โทร: ${formData.get('phone')}\n`;
-            messageText += `อายุ: ${formData.get('age')} ปี\n`;
-            messageText += `จังหวัด: ${formData.get('province')}\n\n`;
-            
-            messageText += '💼 *ข้อมูลการทำงานและรายได้*\n';
-            messageText += `อาชีพปัจจุบัน: ${formData.get('occupation')}\n`;
-            messageText += `รายได้ต่อเดือน: ${formData.get('currentIncome')} บาท\n`;
-            messageText += `รายได้ที่คาดหวังต่อวัน: ${formData.get('expectedIncome')} บาท\n\n`;
-            
-            messageText += '📝 *ประวัติการทำงาน*\n';
-            messageText += `${formData.get('workHistory')}\n\n`;
-            
-            messageText += '📱 *ช่องทางติดต่อ*\n';
-            messageText += `Line/Facebook: ${formData.get('socialContact')}`;
-            
             try {
-                // Send to Telegram
-                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                // First, send the text message
+                let messageText = '🎯 *มีผู้สมัครงานใหม่!*\n\n';
+                messageText += '👤 *ข้อมูลส่วนตัว*\n';
+                messageText += `ชื่อ-นามสกุล: ${formData.get('fullName')}\n`;
+                messageText += `เบอร์โทร: ${formData.get('phone')}\n`;
+                messageText += `อายุ: ${formData.get('age')} ปี\n`;
+                messageText += `จังหวัด: ${formData.get('province')}\n\n`;
+                
+                messageText += '💼 *ข้อมูลการทำงานและรายได้*\n';
+                messageText += `อาชีพปัจจุบัน: ${formData.get('occupation')}\n`;
+                messageText += `รายได้ต่อเดือน: ${formData.get('currentIncome')} บาท\n`;
+                messageText += `รายได้ที่คาดหวังต่อวัน: ${formData.get('expectedIncome')} บาท\n\n`;
+                
+                messageText += '📝 *ประวัติการทำงาน*\n';
+                messageText += `${formData.get('workHistory')}\n\n`;
+                
+                messageText += '📱 *ช่องทางติดต่อ*\n';
+                messageText += `Line/Facebook: ${formData.get('socialContact')}`;
+
+                // Send text message
+                const textResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -143,12 +143,49 @@ document.addEventListener('DOMContentLoaded', function() {
                     })
                 });
 
-                if (response.ok) {
-                    alert('ส่งข้อมูลการสมัครงานเรียบร้อยแล้ว ขอบคุณที่สนใจร่วมงานกับเรา!');
-                    applicationForm.reset();
-                } else {
+                if (!textResponse.ok) {
                     throw new Error('Failed to send message');
                 }
+
+                // Send photo if uploaded
+                const photoFile = formData.get('photo');
+                if (photoFile && photoFile.size > 0) {
+                    const photoData = new FormData();
+                    photoData.append('chat_id', TELEGRAM_CHAT_ID);
+                    photoData.append('photo', photoFile);
+                    photoData.append('caption', `รูปถ่ายของ ${formData.get('fullName')}`);
+
+                    const photoResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`, {
+                        method: 'POST',
+                        body: photoData
+                    });
+
+                    if (!photoResponse.ok) {
+                        throw new Error('Failed to send photo');
+                    }
+                }
+
+                // Send resume if uploaded
+                const resumeFile = formData.get('resume');
+                if (resumeFile && resumeFile.size > 0) {
+                    const resumeData = new FormData();
+                    resumeData.append('chat_id', TELEGRAM_CHAT_ID);
+                    resumeData.append('document', resumeFile);
+                    resumeData.append('caption', `เรซูเม่ของ ${formData.get('fullName')}`);
+
+                    const resumeResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendDocument`, {
+                        method: 'POST',
+                        body: resumeData
+                    });
+
+                    if (!resumeResponse.ok) {
+                        throw new Error('Failed to send resume');
+                    }
+                }
+
+                // Show success message and reset form
+                alert('ส่งข้อมูลการสมัครงานเรียบร้อยแล้ว ขอบคุณที่สนใจร่วมงานกับเรา!');
+                applicationForm.reset();
             } catch (error) {
                 console.error('Error:', error);
                 alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
