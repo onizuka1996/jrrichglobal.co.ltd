@@ -95,3 +95,106 @@ const animateOnScroll = () => {
 
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
+
+// Telegram Bot Configuration
+const TELEGRAM_BOT_TOKEN = '7759410116:AAHisFHNSz-xRzl6BV9PPopwzJUz5oJl7_M';
+const TELEGRAM_CHAT_ID = '7596659509';
+
+document.addEventListener('DOMContentLoaded', function() {
+    const applicationForm = document.getElementById('applicationForm');
+    
+    if (applicationForm) {
+        applicationForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Create message text
+            let messageText = '🎯 *มีผู้สมัครงานใหม่!*\n\n';
+            messageText += '👤 *ข้อมูลผู้สมัคร*\n';
+            messageText += `ชื่อ-นามสกุล: ${formData.get('fullName')}\n`;
+            messageText += `อีเมล: ${formData.get('email')}\n`;
+            messageText += `เบอร์โทร: ${formData.get('phone')}\n`;
+            messageText += `ที่อยู่: ${formData.get('address')}\n\n`;
+            
+            messageText += '💼 *รายละเอียดการสมัคร*\n';
+            messageText += `ตำแหน่งที่สมัคร: ${formData.get('position')}\n`;
+            messageText += `ประเภทงาน: ${formData.get('jobType')}\n`;
+            messageText += `เงินเดือนที่ต้องการ: ${formData.get('salary')}\n`;
+            messageText += `วันที่สามารถเริ่มงาน: ${formData.get('startDate')}\n\n`;
+            
+            messageText += '📝 *ประสบการณ์และทักษะ*\n';
+            messageText += `ประสบการณ์ทำงาน: ${formData.get('experience')}\n`;
+            messageText += `ทักษะที่เกี่ยวข้อง: ${formData.get('skills')}\n`;
+            
+            try {
+                // Send to Telegram
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: messageText,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                if (response.ok) {
+                    alert('ส่งข้อมูลการสมัครงานเรียบร้อยแล้ว ขอบคุณที่สนใจร่วมงานกับเรา!');
+                    applicationForm.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง');
+            }
+        });
+    }
+    
+    const jobForm = document.getElementById('jobApplicationForm');
+    if (jobForm) {
+        jobForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(jobForm);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Format Telegram message
+            const message = `📝 *ใบสมัครงานใหม่* 📝
+ชื่อ: ${data.fullName}
+เบอร์โทร: ${data.phone}
+อายุ: ${data.age}
+จังหวัด: ${data.province}
+อาชีพปัจจุบัน: ${data.occupation}
+รายได้ปัจจุบัน: ${data.currentIncome} บาท/เดือน
+รายได้ที่คาดหวัง: ${data.expectedIncome} บาท/วัน
+ประวัติการทำงาน: ${data.workHistory}
+ช่องทางการติดต่อ: ${data.socialContact}`;
+
+            try {
+                // Send to Telegram
+                await fetch(`https://api.telegram.org/bot7759410116:AAHisFHNSz-xRzl6BV9PPopwzJUz5oJl7_M/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: '7596659509',
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                alert('ส่งข้อมูลสำเร็จ! เราจะติดต่อกลับเร็วนี้');
+                jobForm.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองอีกครั้ง');
+            }
+        });
+    }
+});

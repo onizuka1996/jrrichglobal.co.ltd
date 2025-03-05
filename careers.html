@@ -65,74 +65,89 @@
 
     <!-- Job Application Section -->
     <section class="py-5 bg-light" style="margin-top: 80px;">
-        <div class="container">
-            <div class="text-center mb-5">
-                <img src="images/jr-logo-full.jpg" alt="JR Rich Global Logo" class="img-fluid mb-4" style="max-width: 200px;">
-                <h2>สมัครงาน</h2>
-            </div>
+        <div class="container mt-5 pt-5">
+            <h2 class="text-center mb-4">สมัครงานกับเรา</h2>
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card shadow-lg">
-                        <div class="card-body p-5">
-                            <form id="jobApplicationForm" class="job-application-form">
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">ประเภทการสมัคร</label>
-                                    <select class="form-select" name="jobType" required>
-                                        <option value="">เลือกประเภทการสมัคร</option>
-                                        <option value="fulltime">พนักงานประจำ</option>
-                                        <option value="parttime">พนักงานพาร์ทไทม์</option>
+                <div class="col-md-8">
+                    <form id="applicationForm" class="needs-validation" novalidate>
+                        <!-- ข้อมูลส่วนตัว -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">ข้อมูลส่วนตัว</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label">ชื่อ-นามสกุล *</label>
+                                    <input type="text" class="form-control" id="fullName" name="fullName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">อีเมล *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">เบอร์โทรศัพท์ *</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">ที่อยู่</label>
+                                    <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ข้อมูลการสมัครงาน -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">ข้อมูลการสมัครงาน</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="position" class="form-label">ตำแหน่งที่สมัคร *</label>
+                                    <input type="text" class="form-control" id="position" name="position" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jobType" class="form-label">ประเภทงาน *</label>
+                                    <select class="form-select" id="jobType" name="jobType" required>
+                                        <option value="">เลือกประเภทงาน</option>
+                                        <option value="fulltime">Full-time</option>
+                                        <option value="parttime">Part-time</option>
+                                        <option value="contract">Contract</option>
                                     </select>
                                 </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">ชื่อจริง - นามสกุล</label>
-                                    <input type="text" class="form-control" name="fullName" required>
+                                <div class="mb-3">
+                                    <label for="salary" class="form-label">เงินเดือนที่ต้องการ *</label>
+                                    <input type="text" class="form-control" id="salary" name="salary" required>
                                 </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">เบอร์โทรศัพท์</label>
-                                    <input type="tel" class="form-control" name="phone" required>
+                                <div class="mb-3">
+                                    <label for="startDate" class="form-label">วันที่สามารถเริ่มงานได้ *</label>
+                                    <input type="date" class="form-control" id="startDate" name="startDate" required>
                                 </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">อายุ</label>
-                                    <input type="number" class="form-control" name="age" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">จังหวัด</label>
-                                    <input type="text" class="form-control" name="province" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">อาชีพ</label>
-                                    <input type="text" class="form-control" name="occupation" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">รายได้ต่อเดือน (บาท)</label>
-                                    <input type="number" class="form-control" name="currentIncome" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">รายได้ที่คาดหวังต่อวันกับบริษัทของเรา (บาท)</label>
-                                    <input type="number" class="form-control" name="expectedIncome" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">ประวัติการทำงานก่อนหน้า</label>
-                                    <textarea class="form-control" name="workHistory" rows="3" required></textarea>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">ช่องทางการติดต่อ ID Line/facebook</label>
-                                    <input type="text" class="form-control" name="socialContact" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">ภาพถ่ายหน้าตรง</label>
-                                    <input type="file" class="form-control" name="photo" accept="image/*" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label fw-bold">เรซูเม่ (ไฟล์แนบ)</label>
-                                    <input type="file" class="form-control" name="resume" accept=".pdf,.doc,.docx">
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg px-5">บันทึกข้อมูล</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+
+                        <!-- ประสบการณ์และทักษะ -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">ประสบการณ์และทักษะ</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="experience" class="form-label">ประสบการณ์ทำงาน</label>
+                                    <textarea class="form-control" id="experience" name="experience" rows="4"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="skills" class="form-label">ทักษะที่เกี่ยวข้อง</label>
+                                    <textarea class="form-control" id="skills" name="skills" rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <i class="fas fa-paper-plane me-2"></i>ส่งใบสมัคร
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
